@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
+  <title>
+   Hulkpage - Your Hosting Platform
+  </title>
+  <meta content="Admin Dashboard" name="description">
+   <meta content="Themesbrand" name="author">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <!-- App Icons -->
+    <link href="{{ url_for('static', filename = 'assets/images/favicon.ico') }}" rel="shortcut icon"/>
+    <!--Morris Chart CSS -->
+    <link href="{{ url_for('static', filename = 'assets/plugins/morris/morris.css') }}" rel="stylesheet"/>
+    <!-- App css -->
+    <link href="{{ url_for('static', filename = 'assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    </link>
+   </meta>
+  </meta>
+ </head>
+ <body>
+  <!-- Loader -->
+  <div id="preloader">
+   <div id="status">
+    <div class="spinner">
+    </div>
+   </div>
+  </div>
+  <div class="header-bg">
+   <!-- Navigation Bar-->
+   <header id="topnav">
+    <div class="topbar-main">
+     <div class="container-fluid">
+      <!-- Logo container-->
+      <div class="logo">
+       <!-- Text Logo -->
+       <a class="logo" href="index.html">
+        HulkPage
+       </a>
+       <!-- Image Logo -->
+       <!-- <a href="index.html" class="logo">
+                              <img src="assets/images/logo-sm.png" alt="" height="22" class="logo-small">
+                              <img src="assets/images/logo.png" alt="" height="24" class="logo-large">
+                          </a> -->
+      </div>
+      <!-- End Logo container-->
+      <div class="menu-extras topbar-custom">
+       <ul class="list-inline float-right mb-0">
+        <!-- notification-->
+        <li class="list-inline-item dropdown notification-list">
+         <a aria-expanded="false" aria-haspopup="false" class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button">
+          <i class="ti-bell noti-icon">
+          </i>
+          <span class="badge badge-info badge-pill noti-icon-badge">
+           3
+          </span>
+         </a>
+         <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
+          <!-- item-->
+          <div class="dropdown-item noti-title">
+           <h5>
+            Notification (3)
+           </h5>
+          </div>
+          <!-- item-->
+          <a class="dropdown-item notify-item search" href="javascript:void(0);">
+           <div class="notify-icon bg-success">
+            <i class="mdi mdi-cart-outline">
+            </i>
+           </div>
+           <p class="notify-details">
+            <b>
+             Your order is placed
+            </b>
+            <small class="text-muted">
+             Dummy text of the printing and typesetting industry.
+            </small>
+           </p>
+          </a>
+          <!-- item-->
+          <a class="dropdown-item notify-item" href="javascript:void(0);">
+           <div class="notify-icon bg-warning">
+            <i class="mdi mdi-message">
+            </i>
+           </div>
+           <p class="notify-details">
+            <b>
+             New Message received
+            </b>
+            <small class="text-muted">
+             You have 87 unread messages
+            </small>
+           </p>
+          </a>
+          <!-- item-->
+          <a class="dropdown-item notify-item" href="javascript:void(0);">
+           <div class="notify-icon bg-info">
+            <i class="mdi mdi-martini">
+            </i>
+           </div>
+           <p class="notify-details">
+            <b>
+             Your item is shipped
+            </b>
+            <small class="text-muted">
+             It is a long established fact that a reader will
+            </small>
+           </p>
+          </a>
+          <!-- All-->
+          <a class="dropdown-item notify-item" href="javascript:void(0);">
+           View All
+          </a>
+         </div>
+        </li>
+        <!-- User-->
+        <li class="list-inline-item dropdown notification-list">
+         <a aria-expanded="false" aria-haspopup="false" class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button">
+          <img alt="user" class="rounded-circle" src="{{ url_for('static', filename = 'assets/images/users/avatar-1.jpg') }}"/>
+          <span class="ml-1">
+           Denish J.
+           <i class="mdi mdi-chevron-down">
+           </i>
+          </span>
+         </a>
+         <div class="dropdown-menu dropdown-menu-right profile-dropdown">
+          <a class="dropdown-item" href="#">
+           <i class="dripicons-user text-muted">
+           </i>
+           Profile
+          </a>
+          <a class="dropdown-item" href="#">
+           <i class="dripicons-wallet text-muted">
+           </i>
+           My Wallet
+          </a>
+          <a class="dropdown-item" href="#">
+           <span class="badge badge-success pull-right m-t-5">
+            5
+           </span>
+           <i class="dripicons-gear text-muted">
+           </i>
+           Settings
+          </a>
+          <a class="dropdown-item" href="#">
+           <i class="dripicons-lock text-muted">
+           </i>
+           Lock screen
+          </a>
+          <div class="dropdown-divider">
+          </div>
+          <a class="dropdown-item" href="#">
+           <i class="dripicons-exit text-muted">
+           </i>
+           Logout
+          </a>
+         </div>
+        </li>
+        <li class="menu-item list-inline-item">
+         <!-- Mobile menu toggle-->
+         <a class="navbar-toggle nav-link">
+          <div class="lines">
+           <span>
+           </span>
+           <span>
+           </span>
+           <span>
+           </span>
+          </div>
+         </a>
+         <!-- End mobile menu toggle-->
+        </li>
+       </ul>
+      </div>
+      <!-- end menu-extras -->
+      <div class="clearfix">
+      </div>
+     </div>
+     <!-- end container -->
+    </div>
+    <!-- end topbar-main -->
+    <!-- MENU Start -->
+    <div class="navbar-custom">
+     <div class="container-fluid">
+      <div id="navigation">
+       <!-- Navigation Menu-->
+       <ul class="navigation-menu">
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-suitcase">
+          </i>
+          Settings
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu megamenu">
+          <li>
+           <ul>
+            <li>
+             <a href="">
+              General
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Billing
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Fraud Protection
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Security
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Mail
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Sms
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Staff
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Notification
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Automation
+             </a>
+            </li>
+           </ul>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-to-do">
+          </i>
+          Orders
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="browse-order.html">
+            Browse
+           </a>
+          </li>
+          <li>
+           <a href="active-order.html">
+            Active
+           </a>
+          </li>
+          <li>
+           <a href="pending-order.html">
+            Pending
+           </a>
+          </li>
+          <li>
+           <a href="suspended-order.html">
+            Suspended
+           </a>
+          </li>
+          <li>
+           <a href="cancelled-order.html">
+            Cancelled
+           </a>
+          </li>
+          <li>
+           <a href="calendar.html">
+            Upgrades/Downgrades
+           </a>
+          </li>
+          <li>
+           <a href="upgrade_downgrade-order.html">
+            Order Addons
+           </a>
+          </li>
+          <li>
+           <a href="cancel_request-order.html">
+            Cancellation Request
+           </a>
+          </li>
+          <li>
+           <a href="create-order.html">
+            Add Orders
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-trophy">
+          </i>
+          Billing
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="browse-invoice.html">
+            Browse Invoice
+           </a>
+          </li>
+          <li>
+           <a href="create-pay-invoice.html">
+            Create Invoice
+           </a>
+          </li>
+          <li>
+           <a href="paid-invoice.html">
+            Paid Invoice
+           </a>
+          </li>
+          <li>
+           <a href="unpaid-invoice.html">
+            Unpaid Invoice
+           </a>
+          </li>
+          <li>
+           <a href="cancelled-invoice.html">
+            Cancelled Invoice
+           </a>
+          </li>
+          <li class="has-submenu">
+           <a>
+            Official Invoice
+           </a>
+           <ul class="submenu">
+            <a href="formalized-invoice.html">
+             Formalized Invoice
+            </a>
+            <a href="non-formalized-invoice.html">
+             Non Formalized Invoice
+            </a>
+           </ul>
+          </li>
+          <li>
+           <a href="cash-management.html">
+            Cash Management
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Clients
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="customer.html">
+            Client List
+           </a>
+          </li>
+          <li>
+           <a href="affiliate.html">
+            Affiliate Management
+           </a>
+          </li>
+          <li>
+           <a href="reseller.html">
+            Reseller Management
+           </a>
+          </li>
+          <li class="has-submenu">
+           <a>
+            Document Verification
+           </a>
+           <ul class="submenu">
+            <a href="document-filter.html">
+             Filters
+            </a>
+            <a href="document-records.html">
+             Records
+            </a>
+           </ul>
+          </li>
+          <li>
+           <a href="wf-fraud.html">
+            Fraud Blacklist
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Tools
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="addons.html">
+            Addons
+           </a>
+          </li>
+          <li>
+           <a href="bulk-mail.html">
+            Mass Email
+           </a>
+          </li>
+          <li>
+           <a href="bulk-sms.html">
+            Mass Sms
+           </a>
+          </li>
+          <li>
+           <a href="systemic-sms-record.html">
+            Sytemic Sms Records
+           </a>
+          </li>
+          <li>
+           <a href="systemic-mail-record.html">
+            Sytemic Email Records
+           </a>
+          </li>
+          <li class="has-submenu">
+           <a>
+            Process Logs
+           </a>
+           <ul class="submenu">
+            <a href="session-logs.html">
+             Session Logs
+            </a>
+            <a href="activity-log.html">
+             Activity Logs
+            </a>
+            <a href="systemic-error-log.html">
+             Systemic Error Logs
+            </a>
+            <a href="module-activity-log.html">
+             Module Activity Logs
+            </a>
+           </ul>
+          </li>
+          <li>
+           <a href="reminder.html">
+            Reminders
+           </a>
+          </li>
+          <li>
+           <a href="task-palnner.html">
+            Task Planners
+           </a>
+          </li>
+          <li>
+           <a href="">
+            Easy Import Tools
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          WA Analytics
+          <i>
+          </i>
+         </a>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Support
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="tickets.html">
+            Tickets
+           </a>
+          </li>
+          <li>
+           <a href="create-ticket.html">
+            Create Tickets
+           </a>
+          </li>
+          <li>
+           <a href="create-response.html">
+            Responses
+           </a>
+          </li>
+          <li>
+           <a href="custom-fields.html">
+            Custom Field
+           </a>
+          </li>
+          <li>
+           <a href="knowledge-base.html">
+            Knowledge Base
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Services
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li class="has-submenu">
+           <a>
+            Service Management
+           </a>
+           <ul class="submenu">
+            <a href="create-service-group.html">
+             Add Group
+            </a>
+            <a href="module-setting.html">
+             Module Settings
+            </a>
+            <a href="product-addons.html">
+             Addons
+            </a>
+            <a href="">
+             Requirements
+            </a>
+           </ul>
+          </li>
+          <li class="has-submenu">
+           <a>
+            Hosting Management
+           </a>
+           <ul class="submenu">
+            <a href="">
+             Server Settings
+            </a>
+            <a href="">
+             Hosting Packages
+            </a>
+            <a href="">
+             Dedicated/VPS Packages
+            </a>
+           </ul>
+          </li>
+          <li class="has-submenu">
+           <a>
+            Domain Name Registration
+           </a>
+           <ul class="submenu">
+            <a href="">
+             Extensions and Prices
+            </a>
+            <a href="">
+             Domain Name Registrars
+            </a>
+            <a href="">
+             Dedicated/VPS Packages
+            </a>
+           </ul>
+          </li>
+          <li>
+           <a href="">
+            Software Services
+           </a>
+          </li>
+          <li class="has-submenu">
+           <a>
+            International Sms Services
+           </a>
+           <ul class="submenu">
+            <a href="">
+             Sender IDs
+            </a>
+            <a href="">
+             Reports
+            </a>
+           </ul>
+          </li>
+          <li>
+           <a href="advanced-rating.html">
+            Google SEO Services
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Site Management
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="pages.html">
+            Pages
+           </a>
+          </li>
+          <li>
+           <a href="agreement.html">
+            Agreement
+           </a>
+          </li>
+          <li>
+           <a href="add-news-announcement.html">
+            Announcement
+           </a>
+          </li>
+          <li>
+           <a href="create-blog.html">
+            Blog
+           </a>
+          </li>
+          <li>
+           <a href="references.html">
+            References
+           </a>
+          </li>
+          <li>
+           <a href="">
+            Menu
+           </a>
+          </li>
+          <li>
+           <a href="slider-list.html">
+            Sliders
+           </a>
+          </li>
+          <li>
+           <a href="client-testimonial.html">
+            Client Testimonials
+           </a>
+          </li>
+          <li>
+           <a href="contact-message.html">
+            Contact Messages
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Languages
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="browse-language.html">
+            Browse Languages
+           </a>
+          </li>
+          <li>
+           <a href="find-replace.html">
+            Find and Replace
+           </a>
+          </li>
+          <li>
+           <a href="add-langauge.html">
+            Add Language
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Help
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="">
+            Health Situations
+           </a>
+          </li>
+          <li>
+           <a href="">
+            Updates
+           </a>
+          </li>
+          <li>
+           <a href="">
+            Licence Information
+           </a>
+          </li>
+          <li>
+           <a href="">
+            User Guide
+           </a>
+          </li>
+          <li>
+           <a href="">
+            Development Guide
+           </a>
+          </li>
+         </ul>
+        </li>
+       </ul>
+       <!-- End navigation menu -->
+      </div>
+      <!-- end #navigation -->
+     </div>
+     <!-- end container -->
+    </div>
+    <!-- end navbar-custom -->
+   </header>
+   <div class="container-fluid">
+    <!-- Page-Title -->
+    <div class="row">
+     <div class="col-sm-12">
+      <div class="page-title-box">
+       <form class="float-right app-search">
+        <a href="">
+         Dashboard
+        </a>
+        /
+        <a>
+         Create New Category
+        </a>
+        <button type="submit">
+         <i class="fa fa-search">
+         </i>
+        </button>
+       </form>
+       <h4 class="page-title">
+        <i class="dripicons-box">
+        </i>
+        Create New Category
+       </h4>
+      </div>
+     </div>
+    </div>
+    <!-- end page title end breadcrumb -->
+   </div>
+  </div>
+  <div class="wrapper">
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-12">
+      <div class="card m-b-20">
+       <div class="card-body">
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          Category Name
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <select class="form-control">
+            <option>
+             Active
+            </option>
+            <option>
+             Inactive
+            </option>
+           </select>
+          </div>
+         </div>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          Sequence Number
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <input class="form-control" id="example-text-input" type="text"/>
+           Specify the order
+          </div>
+         </div>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          BackGround Image(optional)
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <input class="form-control" type="file">
+           </input>
+          </div>
+         </div>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          Content
+         </label>
+         <form method="post">
+          <textarea id="elm1" name="area"></textarea>
+         </form>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          SEO Title
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <input class="form-control" placeholder="it is recommended not to exceed 80 characters" type="text"/>
+          </div>
+         </div>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          SEO Description
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <input class="form-control" placeholder="it is recommended not to exceed 20 characters" type="text"/>
+          </div>
+         </div>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          SEO Keywords
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <input class="form-control" placeholder="it is recommended not to exceed 80 characters" type="text"/>
+          </div>
+         </div>
+        </div>
+        <div align="right">
+         <button class="btn btn-pink waves-effect waves-light" type="submit">
+          Create
+         </button>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- end col -->
+    </div>
+    <!-- end row -->
+   </div>
+   <!-- end container -->
+  </div>
+  <!-- end wrapper -->
+  <!-- Footer -->
+  <footer class="footer">
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-12">
+      Â© 2020 HulkPage
+     </div>
+    </div>
+   </div>
+  </footer>
+  <!-- End Footer -->
+  <!-- jQuery  -->
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/bootstrap.bundle.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/modernizr.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/waves.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.slimscroll.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.nicescroll.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.scrollTo.min.js') }}">
+  </script>
+  <!--Wysiwig js-->
+  <script src="{{ url_for('static', filename = 'assets/plugins/tinymce/tinymce.min.js') }}">
+  </script>
+  <!-- App js -->
+  <script src="{{ url_for('static', filename = 'assets/js/app.js') }}">
+  </script>
+  <script>
+   $(document).ready(function () {
+                if($("#elm1").length > 0){
+                    tinymce.init({
+                        selector: "textarea#elm1",
+                        theme: "modern",
+                        height:300,
+                        plugins: [
+                            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                            "save table contextmenu directionality emoticons template paste textcolor"
+                        ],
+                        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+                        style_formats: [
+                            {title: 'Bold text', inline: 'b'},
+                            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+                            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+                            {title: 'Example 1', inline: 'span', classes: 'example1'},
+                            {title: 'Example 2', inline: 'span', classes: 'example2'},
+                            {title: 'Table styles'},
+                            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+                        ]
+                    });
+                }
+            });
+  </script>
+ </body>
+</html>

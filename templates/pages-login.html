@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
+  <title>
+   HulkPage - Responsive Bootstrap 4 Admin Dashboard
+  </title>
+  <meta content="Admin Dashboard" name="description">
+   <meta content="Themesbrand" name="author">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <!-- App Icons -->
+    <link href="{{ url_for('static', filename = 'assets/images/favicon.ico') }}" rel="shortcut icon"/>
+    <!-- App css -->
+    <link href="{{ url_for('static', filename = 'assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
+     <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+    </link>
+   </meta>
+  </meta>
+ </head>
+ <body>
+  <!-- Loader -->
+  <div id="preloader">
+   <div id="status">
+    <div class="spinner">
+    </div>
+   </div>
+  </div>
+  <!-- Begin page -->
+  <div class="accountbg">
+  </div>
+  <div class="wrapper-page">
+   <div class="card">
+    <div class="card-body">
+     <h3 class="text-center m-0">
+      <a class="logo logo-admin" href="index.html">
+       <img alt="logo" height="30" src="{{ url_for('static', filename = 'assets/images/logo_dark.png') }}"/>
+      </a>
+     </h3>
+     <div class="p-3">
+      <h4 class="text-muted font-18 m-b-5 text-center">
+       Welcome Back !
+      </h4>
+      <p class="text-muted text-center">
+       Sign in to continue to HulkPage.
+      </p>
+      <form action="index.html" class="form-horizontal m-t-30">
+       <div class="form-group">
+        <label for="username">
+         Username
+        </label>
+        <input class="form-control" id="username" placeholder="Enter username" type="text"/>
+       </div>
+       <div class="form-group">
+        <label for="userpassword">
+         Password
+        </label>
+        <input class="form-control" id="userpassword" placeholder="Enter password" type="password"/>
+       </div>
+       <div class="form-group row m-t-20">
+        <div class="col-sm-6">
+         <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" id="customControlInline" type="checkbox"/>
+          <label class="custom-control-label" for="customControlInline">
+           Remember me
+          </label>
+         </div>
+        </div>
+        <div class="col-sm-6 text-right">
+         <button class="btn btn-primary w-md waves-effect waves-light" type="submit">
+          Log In
+         </button>
+        </div>
+       </div>
+       <div class="form-group m-t-10 mb-0 row">
+        <div class="col-12 m-t-20">
+         <a class="text-muted" href="pages-recoverpw.html">
+          <i class="mdi mdi-lock">
+          </i>
+          Forgot your password?
+         </a>
+        </div>
+       </div>
+      </form>
+     </div>
+    </div>
+   </div>
+   <div class="m-t-40 text-center">
+    <p>
+     Don't have an account ?
+     <a class="font-500 font-14 text-primary font-secondary" href="pages-register.html">
+      Signup Now
+     </a>
+    </p>
+    <p>
+     Â© 2020 HulkPage.
+    </p>
+   </div>
+  </div>
+  <!-- jQuery  -->
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/bootstrap.bundle.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/modernizr.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/waves.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.slimscroll.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.nicescroll.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.scrollTo.min.js') }}">
+  </script>
+  <!-- App js -->
+  <script src="{{ url_for('static', filename = 'assets/js/app.js') }}">
+  </script>
+ </body>
+</html>
