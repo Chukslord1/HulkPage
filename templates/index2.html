@@ -16,8 +16,8 @@
     <link href="{{ url_for('static', filename = 'assets/plugins/morris/morris.css') }}" rel="stylesheet"/>
     <!-- App css -->
     <link href="{{ url_for('static', filename = 'assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename = 'assets/css/icons.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename = 'assets/css/style.css') }}" rel="stylesheet" type="text/css">
     </link>
    </meta>
   </meta>
@@ -1042,7 +1042,7 @@
         <div id="online_list" style="opacity: 1; display: inline-block;">
          <div class="onlineadmin">
           <div class="padding15">
-           <img height="50" src="{{ url_for('static', filename = 'https://demo.wisecp.com/resources/uploads/admin/profile/2018-07-23/8fb13ea9fa968c84db6f5e9.jpg') }}" width="50"/>
+           <img height="50" src="{{ url_for('static', filename = 'assets/images/users/man.jpg') }}" width="50"/>
            <h5 style="font-size:15px;font-weight:600;">
             Alexander D.paulin
            </h5>
