@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8"/>
+ <head><meta charset="shift_jis">
+  
   <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
   <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
   <title>
@@ -16,7 +16,7 @@
     <link href="{{ url_for('static', filename = 'assets/plugins/morris/morris.css') }}" rel="stylesheet"/>
     <!-- App css -->
     <link href="{{ url_for('static', filename = 'assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ url_for('static', filename = '{{ url_for('static', filename = 'assets/css/icons.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename = 'assets/css/icons.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url_for('static', filename = 'assets/css/style.css') }}" rel="stylesheet" type="text/css">
     </link>
    </meta>
@@ -38,14 +38,14 @@
       <!-- Logo container-->
       <div class="logo">
        <!-- Text Logo -->
-       <a class="logo" href="index.html">
+       <a class="logo" href="{{ url_for('index') }}">
         HulkPage
        </a>
        <!-- Image Logo -->
        <!-- <a href="index.html" class="logo">
-                              <img src="assets/images/logo-sm.png" alt="" height="22" class="logo-small">
-                              <img src="assets/images/logo.png" alt="" height="24" class="logo-large">
-                          </a> -->
+                                <img src="assets/images/logo-sm.png" alt="" height="22" class="logo-small">
+                                <img src="assets/images/logo.png" alt="" height="24" class="logo-large">
+                            </a> -->
       </div>
       <!-- End Logo container-->
       <div class="menu-extras topbar-custom">
@@ -259,47 +259,47 @@
          </a>
          <ul class="submenu">
           <li>
-           <a href="browse-order.html">
+           <a href="{{ url_for('browse_order') }}">
             Browse
            </a>
           </li>
           <li>
-           <a href="active-order.html">
+           <a href="{{ url_for('active_order') }}">
             Active
            </a>
           </li>
           <li>
-           <a href="pending-order.html">
+           <a href="{{ url_for('pending_order') }}">
             Pending
            </a>
           </li>
           <li>
-           <a href="suspended-order.html">
+           <a href="{{ url_for('suspended_order') }}">
             Suspended
            </a>
           </li>
           <li>
-           <a href="cancelled-order.html">
+           <a href="{{ url_for('cancelled_order') }}">
             Cancelled
            </a>
           </li>
           <li>
-           <a href="calendar.html">
+           <a href="{{ url_for('upgrade_downgrade_order') }}">
             Upgrades/Downgrades
            </a>
           </li>
           <li>
-           <a href="upgrade_downgrade-order.html">
+           <a href="{{ url_for('addons_order') }}">
             Order Addons
            </a>
           </li>
           <li>
-           <a href="cancel_request-order.html">
+           <a href="{{ url_for('cancel_request_order') }}">
             Cancellation Request
            </a>
           </li>
           <li>
-           <a href="create-order.html">
+           <a href="{{ url_for('create_order') }}">
             Add Orders
            </a>
           </li>
@@ -315,27 +315,27 @@
          </a>
          <ul class="submenu">
           <li>
-           <a href="browse-invoice.html">
+           <a href="{{ url_for('browse_invoice') }}">
             Browse Invoice
            </a>
           </li>
           <li>
-           <a href="create-pay-invoice.html">
+           <a href="{{ url_for('create_pay_invoice') }}">
             Create Invoice
            </a>
           </li>
           <li>
-           <a href="paid-invoice.html">
+           <a href="{{ url_for('paid_invoice') }}">
             Paid Invoice
            </a>
           </li>
           <li>
-           <a href="unpaid-invoice.html">
+           <a href="{{ url_for('unpaid_invoice') }}">
             Unpaid Invoice
            </a>
           </li>
           <li>
-           <a href="cancelled-invoice.html">
+           <a href="{{ url_for('cancelled_invoice') }}">
             Cancelled Invoice
            </a>
           </li>
@@ -344,16 +344,16 @@
             Official Invoice
            </a>
            <ul class="submenu">
-            <a href="formalized-invoice.html">
+            <a href="{{ url_for('formalized_invoice') }}">
              Formalized Invoice
             </a>
-            <a href="non-formalized-invoice.html">
+            <a href="{{ url_for('non_formalized_invoice') }}">
              Non Formalized Invoice
             </a>
            </ul>
           </li>
           <li>
-           <a href="cash-management.html">
+           <a href="{{ url_for('cash_management') }}">
             Cash Management
            </a>
           </li>
@@ -369,17 +369,17 @@
          </a>
          <ul class="submenu">
           <li>
-           <a href="customer.html">
+           <a href="{{ url_for('customer') }}">
             Client List
            </a>
           </li>
           <li>
-           <a href="affiliate.html">
+           <a href="{{ url_for('affiliate') }}">
             Affiliate Management
            </a>
           </li>
           <li>
-           <a href="reseller.html">
+           <a href="{{ url_for('reseller') }}">
             Reseller Management
            </a>
           </li>
@@ -388,16 +388,16 @@
             Document Verification
            </a>
            <ul class="submenu">
-            <a href="document-filter.html">
+            <a href="{{ url_for('document_filter') }}">
              Filters
             </a>
-            <a href="document-records.html">
+            <a href="{{ url_for('document_records') }}">
              Records
             </a>
            </ul>
           </li>
           <li>
-           <a href="wf-fraud.html">
+           <a href="{{ url_for('wf_fraud') }}">
             Fraud Blacklist
            </a>
           </li>
@@ -413,27 +413,27 @@
          </a>
          <ul class="submenu">
           <li>
-           <a href="addons.html">
+           <a href="{{ url_for('addons') }}">
             Addons
            </a>
           </li>
           <li>
-           <a href="bulk-mail.html">
+           <a href="{{ url_for('bulk_mail') }}">
             Mass Email
            </a>
           </li>
           <li>
-           <a href="bulk-sms.html">
+           <a href="{{ url_for('bulk_sms') }}">
             Mass Sms
            </a>
           </li>
           <li>
-           <a href="systemic-sms-record.html">
+           <a href="{{ url_for('systemic_sms_record') }}">
             Sytemic Sms Records
            </a>
           </li>
           <li>
-           <a href="systemic-mail-record.html">
+           <a href="{{ url_for('systemic_mail_record') }}">
             Sytemic Email Records
            </a>
           </li>
@@ -442,27 +442,27 @@
             Process Logs
            </a>
            <ul class="submenu">
-            <a href="session-logs.html">
+            <a href="{{ url_for('session_logs') }}">
              Session Logs
             </a>
-            <a href="activity-log.html">
+            <a href="{{ url_for('activity_log') }}">
              Activity Logs
             </a>
-            <a href="systemic-error-log.html">
+            <a href="{{ url_for('systemic_error_log') }}">
              Systemic Error Logs
             </a>
-            <a href="module-activity-log.html">
+            <a href="{{ url_for('module_activity_log') }}">
              Module Activity Logs
             </a>
            </ul>
           </li>
           <li>
-           <a href="reminder.html">
+           <a href="{{ url_for('reminder') }}">
             Reminders
            </a>
           </li>
           <li>
-           <a href="task-palnner.html">
+           <a href="{{ url_for('task_planner') }}">
             Task Planners
            </a>
           </li>
@@ -492,27 +492,27 @@
          </a>
          <ul class="submenu">
           <li>
-           <a href="tickets.html">
+           <a href="{{ url_for('tickets') }}">
             Tickets
            </a>
           </li>
           <li>
-           <a href="create-ticket.html">
+           <a href="{{ url_for('create_ticket') }}">
             Create Tickets
            </a>
           </li>
           <li>
-           <a href="create-response.html">
+           <a href="{{ url_for('responses') }}">
             Responses
            </a>
           </li>
           <li>
-           <a href="custom-fields.html">
+           <a href="{{ url_for('custom_fields') }}">
             Custom Field
            </a>
           </li>
           <li>
-           <a href="knowledge-base.html">
+           <a href="{{ url_for('knowledge_base') }}">
             Knowledge Base
            </a>
           </li>
@@ -532,13 +532,13 @@
             Service Management
            </a>
            <ul class="submenu">
-            <a href="create-service-group.html">
+            <a href="{{ url_for('create_service_group') }}">
              Add Group
             </a>
-            <a href="module-setting.html">
+            <a href="{{ url_for('module_setting') }}">
              Module Settings
             </a>
-            <a href="product-addons.html">
+            <a href="{{ url_for('product_addons') }}">
              Addons
             </a>
             <a href="">
@@ -613,27 +613,27 @@
          </a>
          <ul class="submenu">
           <li>
-           <a href="pages.html">
+           <a href="{{ url_for('pages') }}">
             Pages
            </a>
           </li>
           <li>
-           <a href="agreement.html">
+           <a href="{{ url_for('agreement') }}">
             Agreement
            </a>
           </li>
           <li>
-           <a href="add-news-announcement.html">
+           <a href="{{ url_for('add_news_announcement') }}">
             Announcement
            </a>
           </li>
           <li>
-           <a href="create-blog.html">
+           <a href="{{ url_for('blog') }}">
             Blog
            </a>
           </li>
           <li>
-           <a href="references.html">
+           <a href="{{ url_for('references') }}">
             References
            </a>
           </li>
@@ -643,17 +643,17 @@
            </a>
           </li>
           <li>
-           <a href="slider-list.html">
+           <a href={{ url_for('slider_list') }}>
             Sliders
            </a>
           </li>
           <li>
-           <a href="client-testimonial.html">
+           <a href="{{ url_for('client_testimonial') }}">
             Client Testimonials
            </a>
           </li>
           <li>
-           <a href="contact-message.html">
+           <a href="{{ url_for('contact_message') }}">
             Contact Messages
            </a>
           </li>
@@ -669,17 +669,17 @@
          </a>
          <ul class="submenu">
           <li>
-           <a href="browse-language.html">
+           <a href="{{ url_for('browse_language') }}">
             Browse Languages
            </a>
           </li>
           <li>
-           <a href="find-replace.html">
+           <a href="{{ url_for('find_replace') }}">
             Find and Replace
            </a>
           </li>
           <li>
-           <a href="add-langauge.html">
+           <a href="{{ url_for('add_language') }}">
             Add Language
            </a>
           </li>

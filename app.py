@@ -56,6 +56,10 @@ def browse_invoice():
 def browse_order():
     return render_template("browse-order.html")
 
+@app.route("/browse-language.html/")
+def browse_language():
+    return render_template("browse-language.html")
+
 @app.route("/bulk-mail.html/")
 def bulk_mail():
     return render_template("bulk-mail.html")
@@ -207,6 +211,10 @@ def order_details():
 @app.route("/pages-login.html/")
 def admin_login():
     return render_template("pages-login.html")
+
+@app.route("/pages.html/")
+def pages():
+    return render_template("pages.html")
 
 @app.route("/paid-invoice.html/")
 def paid_invoice():
