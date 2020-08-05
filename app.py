@@ -1,10 +1,11 @@
 from flask import *
 app = Flask(__name__)
 from flask import Flask, render_template, request, redirect, url_for, session
-
 import mysql.connector
 import re
-
+from flask_sqlalchemy import SQLAlchemy
+from models import *
+import os
 application=app
 
 app.secret_key = 'roKBFeMEysoxUPUzVx7cRC17eUwEpJEWvxS9K7Gn'
@@ -14,6 +15,10 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'pythonlogin'
+file_path = os.path.abspath(os.getcwd())+"/HulkPage.db"
+app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///'+file_path
+db = SQLAlchemy(app)
+
 
 # Intialize MySQL
 
@@ -45,7 +50,8 @@ def login():
 
 @app.route("/index/")
 def index():
-    return render_template("index2.html")
+    transactions=Transaction.query.filter_by().all()
+    return render_template("index2.html",transactions=transactions)
 
 @app.route("/active-order.html/")
 def active_order():

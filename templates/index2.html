@@ -860,6 +860,7 @@
        <table class="table m-t-20 mb-0 table-vertical">
         <tbody>
          <tr>
+           {% for transaction in transactions %}
           <td>
            <img alt="user-image" class="thumb-sm rounded-circle mr-2" src="{{ url_for('static', filename = 'assets/images/users/avatar-2.jpg') }}"/>
            Herbert C. Patton
@@ -896,82 +897,7 @@
             search
            </button>
           </td>
-         </tr>
-         <tr>
-          <td>
-           <img alt="user-image" class="thumb-sm rounded-circle mr-2" src="{{ url_for('static', filename = 'assets/images/users/avatar-2.jpg') }}"/>
-           Herbert C. Patton
-          </td>
-          <td>
-           <i>
-           </i>
-           testexamledomain.com (#415)
-          </td>
-          <td>
-           <i>
-           </i>
-           Domain Names
-          </td>
-          <td>
-           <i class="mdi mdi-checkbox-blank-circle text-success">
-           </i>
-           Confirm
-          </td>
-          <td>
-           $14,584
-           <p class="m-0 text-muted font-14">
-            Amount
-           </p>
-          </td>
-          <td>
-           5/12/2016
-           <p class="m-0 text-muted font-14">
-            Date
-           </p>
-          </td>
-          <td>
-           <button class="btn btn-secondary btn-sm waves-effect" href="order-details.html" type="button">
-            search
-           </button>
-          </td>
-         </tr>
-         <tr>
-          <td>
-           <img alt="user-image" class="thumb-sm rounded-circle mr-2" src="{{ url_for('static', filename = 'assets/images/users/avatar-2.jpg') }}"/>
-           Herbert C. Patton
-          </td>
-          <td>
-           <i>
-           </i>
-           testexamledomain.com (#415)
-          </td>
-          <td>
-           <i>
-           </i>
-           Domain Names
-          </td>
-          <td>
-           <i class="mdi mdi-checkbox-blank-circle text-success">
-           </i>
-           Confirm
-          </td>
-          <td>
-           $14,584
-           <p class="m-0 text-muted font-14">
-            Amount
-           </p>
-          </td>
-          <td>
-           5/12/2016
-           <p class="m-0 text-muted font-14">
-            Date
-           </p>
-          </td>
-          <td>
-           <button class="btn btn-secondary btn-sm waves-effect" href="ticket-details.html" type="button">
-            search
-           </button>
-          </td>
+          {% endfor %}
          </tr>
         </tbody>
        </table>
