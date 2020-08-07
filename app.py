@@ -7,12 +7,12 @@ import os
 application=app
 from datetime import datetime
 import sqlite3
-
+from werkzeug.utils import secure_filename
 
 db_path = "HulkPage.db"
 
 
-
+UPLOAD_FOLDER = 'uploads'
 app.secret_key = 'roKBFeMEysoxUPUzVx7cRC17eUwEpJEWvxS9K7Gn'
 
 # Enter your database connection details below
@@ -20,14 +20,14 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'pythonlogin'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 
-conn = sqlite3.connect('HulkPage.db')
-c = conn.cursor()
-c.execute("ALTER TABLE tickets ADD COLUMN priority text  NULL;")
-conn.commit()
-conn.close()
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
+def allowed_file(filename):
+	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 # Intialize MySQL
 #connects it to the books-collection database
 
@@ -316,24 +316,35 @@ def create_slider():
 def create_task_plan():
     return render_template("create-task-plan.html")
 
-@app.route("/create-ticket.html/")
+@app.route("/create-ticket.html/", methods=['GET', 'POST'])
 def create_ticket():
     conn = sqlite3.connect('HulkPage.db')
     c = conn.cursor()
     message=''
-    if request.method == 'POST' and 'amount' in request.form and 'client' in request.form:
+    if request.method == 'POST':
         id=37
         topic=request.form['topic']
         department=request.form['department']
         staff=request.form['staff']
+        file=request.files['file']
+        file.save(secure_filename(file.filename))
+        file_name=file.filename
         create_date=str(datetime.now())
         status="Active"
-        c.execute("INSERT INTO tickets (id,topic,department,staff,create_date,status) VALUES (?, ?,?,?,?,?,?,?,?,?)", (id,topic,department,staff,create_date,status))
+        service=request.form['service']
+        first=request.form['response']
+        second=request.form['area']
+        if first:
+            response=first
+        else:
+            response=second
+        priority=request.form['priority']
+        c.execute("INSERT INTO tickets (id,topic,department,staff,file,create_date,status,service,response) VALUES (?,?,?,?,?,?,?,?,?)", (id,topic,department,staff,file_name,create_date,status,service,response))
         conn.commit()
 
         #closes the connection
         conn.close()
-        return redirect(url_for('create_pay_invoice'))
+        return redirect(url_for('create_ticket'))
         message="Created Invoice"
 
     return render_template("create-ticket.html")
