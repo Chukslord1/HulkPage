@@ -209,25 +209,6 @@ def create_custom_field():
 def create_feedback():
     return render_template("create-feedback.html")
 
-@app.route("/add-order/")
-def add_order():
-    id=datetime.now()
-    client=request.args.get("client")
-    service=request.args.get("service")
-    service_group_id=request.args.get("service_group_id")
-    service_group=ServiceGroup.query.filter_by(id=service_group_id).all()
-    created_at=datetime.now()
-    renewal=datetime.now()
-    amount=request.args.get("amount")
-    status="Active"
-    transaction= Order(id=id,client=client,service=service,service_group=service_group,service_group_id=service_group_id,created_at=created_at,renewal=renewal,amount=amount,status=status)
-    try:
-        if not Order.query.filter_by(id=id):
-            Order.create(id,client,service,service_group,service_group_id,created_at,renewal,amount,status)
-            return jsonify({"success":True,"message":"Order Created"})
-    except:
-        return jsonify({"success":False,"message":"Error while Creating Order please check inputs"})
-
 
 @app.route("/create-order.html/", methods=['GET', 'POST'])
 def create_order():
@@ -245,13 +226,19 @@ def create_order():
         created_at=str(datetime.now())
         renewal=str(datetime.now())
         status="Active"
-        c.execute("INSERT INTO orders (id,client,service,service_group,service_group_id,created_at,renewal,amount,status) VALUES (?, ?,?,?,?,?,?,?,?)", (id,client,service,service_group,service_group_id,created_at,renewal,amount,status))
-        conn.commit()
+        cursor.execute("SELECT * FROM orders WHERE id=%s", (id,))
+        order_Id= cursor.fetchone()
+        if not order_id:
+            c.execute("INSERT INTO orders (id,client,service,service_group,service_group_id,created_at,renewal,amount,status) VALUES (?, ?,?,?,?,?,?,?,?)", (id,client,service,service_group,service_group_id,created_at,renewal,amount,status))
+            conn.commit()
 
         #closes the connection
-        conn.close()
-        return redirect(url_for('create_order'))
-        message="Created Order"
+            conn.close()
+            return redirect(url_for('create_order'))
+            message="Created Order"
+
+        else:
+            message="Already Exists"
 
 
     return render_template("create-order.html",message=message)
