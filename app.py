@@ -280,7 +280,7 @@ def create_pay_invoice():
 
     return render_template("create-pay-invoice.html",message=message)
 
-@app.route("/create-reminder.html/")
+@app.route("/create-reminder.html/", methods=['GET', 'POST'])
 def create_reminder():
     conn = sqlite3.connect('HulkPage.db')
     c = conn.cursor()

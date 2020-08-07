@@ -770,7 +770,7 @@
      <div class="col-md-6 col-xl-3">
       <div class="card text-center m-b-30">
        <div class="mb-2 card-body text-muted">
-        <a href="cash-management.html">
+        <a href="{{ url_for('cash_management') }}">
          <h3 class="text-purple">
           Current Cash $9,514
          </h3>
@@ -782,7 +782,7 @@
      <div class="col-md-6 col-xl-3">
       <div class="card text-center m-b-30">
        <div class="mb-2 card-body text-muted">
-        <a href="customer.html">
+        <a href="{{ url_for('customer') }}">
          <h3 class="text-primary">
           0 Client Registration(Today)
          </h3>
@@ -806,7 +806,7 @@
      <div class="col-md-6 col-xl-3">
       <div class="card text-center m-b-30">
        <div class="mb-2 card-body text-muted">
-        <a href="unpaid-invoice.html">
+        <a href="{{ url_for('browse_invoice') }}">
          <h3 class="text-danger">
           4 Overdue Invoice
          </h3>
@@ -828,7 +828,7 @@
      <div class="col-md-6 col-xl-3">
       <div class="card text-center m-b-30">
        <div class="mb-2 card-body text-muted">
-        <a href="pendong-order.html">
+        <a href="{{ url_for('browse_order') }}">
          <h3 class="text-purple">
           0 Order In the Process
          </h3>
@@ -911,7 +911,7 @@
         <h4 class="mt-0 header-title">
          Payment Date Upcoming Invoices
         </h4>
-        <a href="create-pay-invoice.html">
+        <a href="{{ url_for('create_pay_invoice') }}">
          <h2>
           <span class="badge badge-default">
            Create New
@@ -931,7 +931,7 @@
         </h4>
         <a href="task-planner.html">
          <h2>
-          <span class="badge badge-default">
+          <span class="{{ url_for('task_planner') }}">
            Create New
           </span>
          </h2>
@@ -947,7 +947,7 @@
         <h4 class="mt-0 header-title">
          Reminders
         </h4>
-        <a href="create-reminder.html">
+        <a href="{{ url_for('reminder') }}">
          <h2>
           <span class="badge badge-default">
            Create New
