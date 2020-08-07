@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head><meta charset="shift_jis">
-  
+
   <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
   <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
   <title>
@@ -764,15 +764,16 @@
     <div class="row">
      <div class="col-12">
       <div class="card m-b-20">
+    <form action="{{ url_for('create_ticket') }}" method="post" enctype = "multipart/form-data">
        <div class="card-body">
         <div class="form-group row">
          <label class="col-sm-2 col-form-label" for="example-email-input">
-          Client
+          Topic
          </label>
          <div class="col-sm-10">
           <div class="col-sm-10">
-           <select class="custom-select">
-            <option>
+           <select class="custom-select" name="topic">
+            <option value="John E.goulet">
              John E.goulet
             </option>
            </select>
@@ -785,8 +786,8 @@
          </label>
          <div class="col-sm-10">
           <div class="col-sm-10">
-           <select class="custom-select">
-            <option>
+           <select class="custom-select" name="rel_Service">
+            <option value="None">
              None
             </option>
            </select>
@@ -798,17 +799,17 @@
           Status
          </label>
          <div class="col-sm-10">
-          <select class="custom-select" name="service">
-           <option value="0">
+          <select class="custom-select" name="status">
+           <option value="in profress">
             In Progress
            </option>
-           <option value="0">
+           <option value="awaiting reply">
             Awaiting Reply
            </option>
-           <option value="0">
+           <option value="answered">
             Answered
            </option>
-           <option value="0">
+           <option value="resolved">
             Resolved
            </option>
           </select>
@@ -819,52 +820,37 @@
           Response
          </label>
          <div class="col-sm-10">
-          <select class="custom-select" name="service">
-           <option value="0">
+          <select class="custom-select" name="response">
+           <option >
             Choose
            </option>
           </select>
          </div>
         </div>
-        <form method="post">
          <textarea id="elm1" name="area"></textarea>
-         <div align="right">
-          <button class="btn btn-pink waves-effect waves-light" type="submit">
-           Create
-          </button>
-         </div>
-        </form>
         <div class="row">
          <div class="col-12">
           <div class="card m-b-20">
            <div class="card-body">
             <div class="form-group row">
              <label class="col-sm-2 col-form-label" for="example-text-input">
-              Topic
-             </label>
-             <div class="col-sm-10">
-              <input id="example-text-input" type="text"/>
-             </div>
-            </div>
-            <div class="form-group row">
-             <label class="col-sm-2 col-form-label" for="example-text-input">
               Department
              </label>
              <div class="col-sm-10">
-              <select class="custom-select" name="service">
-               <option value="0">
+              <select class="custom-select" name="department">
+               <option value="general">
                 General
                </option>
-               <option value="0">
+               <option value="orders">
                 Orders
                </option>
-               <option value="0">
+               <option value="billing">
                 Billing
                </option>
-               <option value="0">
+               <option value="technical support">
                 Technical Support
                </option>
-               <option value="0">
+               <option value="others">
                 Others
                </option>
               </select>
@@ -875,14 +861,14 @@
               Priority
              </label>
              <div class="col-sm-10">
-              <select class="custom-select" name="service">
-               <option value="0">
+              <select class="custom-select" name="priority">
+               <option value="low">
                 Low
                </option>
-               <option value="0">
+               <option value="medium">
                 Medium
                </option>
-               <option value="0">
+               <option value="high">
                 High
                </option>
               </select>
@@ -893,11 +879,11 @@
               Assigned Staff
              </label>
              <div class="col-sm-10">
-              <select class="custom-select" name="service">
-               <option value="0">
+              <select class="custom-select" name="staff">
+               <option>
                 None
                </option>
-               <option value="0">
+               <option value="Alexander D.Paulin">
                 Alexander D.Paulin
                </option>
               </select>
@@ -908,7 +894,7 @@
               Lock
              </label>
              <div class="col-sm-10">
-              <input id="example-text-input" type="checkbox" value="Artisanal kale"/>
+              <input id="example-text-input" type="checkbox" name="lock" value="lock"/>
               User Cannot Respond To This Ticket Anymore
              </div>
             </div>
@@ -917,9 +903,14 @@
               Upload File
              </label>
              <div class="col-sm-10">
-              <input id="example-text-input" type="file" value="Artisanal kale"/>
+              <input id="example-text-input" type="file" name="file" value="Artisanal kale"/>
               (Extensions allowed: .jpg, .gif, .jpeg, .png, .doc, .xls, .pdf, .txt, .docx, .xlsx, .rar, .zip)
              </div>
+            </div>
+            <div align="right">
+             <button class="btn btn-pink waves-effect waves-light" type="submit">
+              Create
+             </button>
             </div>
            </div>
           </div>
@@ -927,6 +918,7 @@
          <!-- end col -->
         </div>
        </div>
+     </form>
       </div>
      </div>
      <!-- end col -->

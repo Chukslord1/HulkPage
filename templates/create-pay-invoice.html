@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head><meta charset="shift_jis">
-  
+
   <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
   <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
   <title>
@@ -758,14 +758,15 @@
     <div class="row">
      <div class="col-12">
       <div class="card m-b-20">
+      <form action="{{ url_for('create_pay_invoice') }}" method="post">
        <div class="card-body">
         <div class="form-group row">
          <label class="col-sm-2 col-form-label" for="example-text-input">
           Client
          </label>
          <div class="col-sm-10">
-          <select class="custom-select">
-           <option selected="">
+          <select class="custom-select" name="client">
+           <option selected="" value="John E.Goulliet">
             John E.Goulliet
            </option>
           </select>
@@ -776,9 +777,9 @@
           Payment Status
          </label>
          <div class="col-sm-10">
-          <input id="example-text-input" type="checkbox" value="Artisanal kale"/>
+          <input id="example-text-input" type="checkbox" name="paid" value="Paid"/>
           Paid
-          <input id="example-text-input" type="checkbox" value="Artisanal kale"/>
+          <input id="example-text-input" type="checkbox" name="unpaid" value="Unpaid"/>
           Unpaid
          </div>
         </div>
@@ -790,7 +791,7 @@
           <div class="form-group">
            <div>
             <div class="input-group">
-             <input class="form-control" id="datepicker" placeholder="mm/dd/yyyy" type="text"/>
+             <input class="form-control" id="datepicker" placeholder="mm/dd/yyyy" name="date" type="text"/>
              <div class="input-group-append">
               <span class="input-group-text">
                <i class="mdi mdi-calendar">
@@ -811,7 +812,7 @@
           <div class="form-group">
            <div>
             <div class="input-group">
-             <input class="form-control" id="datepicker" placeholder="mm/dd/yyyy" type="text"/>
+             <input class="form-control" id="datepicker" placeholder="mm/dd/yyyy" name="last_date" type="text"/>
              <div class="input-group-append">
               <span class="input-group-text">
                <i class="mdi mdi-calendar">
@@ -829,9 +830,11 @@
           Tax Type
          </label>
          <div class="col-sm-10">
-          <div class="col-sm-10">
-           Tax Exclusive
-          </div>
+           <select class="custom-select" name="tax_type">
+            <option selected="" value="Tax Exclusive">
+             Tax Exclusive
+            </option>
+           </select>
          </div>
         </div>
         <div class="form-group row">
@@ -839,14 +842,14 @@
           Currency
          </label>
          <div class="col-sm-10">
-          <select class="custom-select">
-           <option selected="">
+          <select class="custom-select" name="currency">
+           <option selected="" value="US Dollar(USD)">
             US Dollar(USD)
            </option>
-           <option selected="">
+           <option value="Euro(Eur)">
             Euro(Eur)
            </option>
-           <option selected="">
+           <option value="British Pound(GBP)">
             British Pound(GBP)
            </option>
           </select>
@@ -888,15 +891,15 @@
              -
             </td>
             <td align="center">
-             <input class="checkbox-custom" data-calculate-amount="true" id="tax-exempt-0" name="items[0][taxexempt]" type="checkbox" value="1"/>
+             <input class="checkbox-custom" data-calculate-amount="true" id="tax-exempt-0"  name="tax_exempt" type="checkbox" value="1"/>
              <label class="checkbox-custom-label" for="tax-exempt-0">
              </label>
             </td>
             <td width="40%">
-             <input name="items[0][description]" type="text" value=""/>
+             <input  name="description" type="text" value=""/>
             </td>
             <td align="center" width="20%">
-             <input data-calculate-amount="true" name="items[0][amount]" onkeypress="return event.charCode==44 || event.charCode==46 || event.charCode&gt;= 48 &amp;&amp;event.charCode&lt;= 57" style="text-align:center;" type="text" value=""/>
+             <input data-calculate-amount="true" name="amount" onkeypress="return event.charCode==44 || event.charCode==46 || event.charCode&gt;= 48 &amp;&amp;event.charCode&lt;= 57" style="text-align:center;" type="text" value=""/>
             </td>
             <td align="center">
              <a class="lbtn bearer" href="javascript:void 0;" style="cursor: move;display: none;">
@@ -911,40 +914,6 @@
            </tr>
           </tbody>
           <tbody>
-           <tr>
-            <td align="right" bgcolor="#eee" colspan="3">
-             <a class="lbtn invoicesplitbtn" href="javascript:add_item(); void 0;">
-              <i aria-hidden="true" class="fa fa-plus">
-              </i>
-             </a>
-             Sub Total
-            </td>
-            <td align="center">
-             <h5 id="subtotal_result">
-              $0.00
-             </h5>
-            </td>
-           </tr>
-           <tr>
-            <td align="right" bgcolor="#eee" colspan="3" id="get_tax_rate">
-             VAT (%18)
-            </td>
-            <td align="center">
-             <h5 id="tax_result">
-              $0.00
-             </h5>
-            </td>
-           </tr>
-           <tr>
-            <td align="right" bgcolor="#eee" colspan="3">
-             Amount Payable
-            </td>
-            <td align="center">
-             <h4 id="total_result">
-              $0.00
-             </h4>
-            </td>
-           </tr>
           </tbody>
          </table>
         </div>
@@ -959,6 +928,7 @@
          </button>
         </div>
        </div>
+     </form>
       </div>
      </div>
      <!-- end col -->

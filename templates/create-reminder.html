@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head><meta charset="shift_jis">
-  
+
   <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
   <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
   <title>
@@ -758,35 +758,34 @@
     <div class="row">
      <div class="col-12">
       <div class="card m-b-20">
+      <form action="{{ url_for('create_reminder') }}" method="post">
        <div class="card-body">
         <div class="form-group row">
          <label class="col-sm-2 col-form-label" for="example-text-input-lg">
           Reminder Text
          </label>
          <div class="col-sm-10">
-          <input class="form-control form-control-lg" id="example-text-input-lg" type="text"/>
+          <input class="form-control form-control-lg" name="text" id="example-text-input-lg" type="text"/>
          </div>
         </div>
         <div class="form-group row">
-         <label class="col-sm-2 col-form-label" for="example-text-input-lg">
-          Status
-         </label>
-         <div class="col-sm-10">
-          <input id="example-text-input-lg" type="checkbox" value="Active"/>
-          Active
-          <input id="example-text-input-lg" type="checkbox" value="Inactive"/>
-          Inactive
-         </div>
-        </div>
-        <div class="form-group row">
-         <label class="col-sm-2 col-form-label" for="example-text-input-lg">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
           Period
          </label>
          <div class="col-sm-10">
-          <input id="example-text-input-lg" type="checkbox" value="Active"/>
-          OneTime
-          <input id="example-text-input-lg" type="checkbox" value="Inactive"/>
-          Reoccuring
+          <div class="col-sm-10">
+           <select class="form-control" name="period">
+            <option>
+             Choose
+            </option>
+            <option value="Domain Name Registration">
+             onetime
+            </option>
+            <option value="Web Hosting">
+             Reocurring
+            </option>
+           </select>
+          </div>
          </div>
         </div>
         <div class="form-group row">
@@ -794,7 +793,7 @@
           Reminder Time
          </label>
          <div class="col-sm-10">
-          <input class="form-control" id="datepicker" placeholder="mm/dd/yyyy" type="text"/>
+          <input class="form-control" name="time" id="datepicker" placeholder="mm/dd/yyyy" type="text"/>
          </div>
         </div>
         <div align="right">
@@ -803,6 +802,7 @@
          </button>
         </div>
        </div>
+     </form>
       </div>
      </div>
      <!-- end col -->

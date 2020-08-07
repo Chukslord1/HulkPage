@@ -22,7 +22,11 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'pythonlogin'
 
 
-
+conn = sqlite3.connect('HulkPage.db')
+c = conn.cursor()
+c.execute("ALTER TABLE tickets ADD COLUMN priority text  NULL;")
+conn.commit()
+conn.close()
 
 # Intialize MySQL
 #connects it to the books-collection database
@@ -253,14 +257,19 @@ def create_pay_invoice():
     if request.method == 'POST' and 'amount' in request.form and 'client' in request.form:
         id=37
         client=request.form['client']
-        amount=request.form['service_group']
-        description=request.form['service']
-        tax_type=request.form['duration']
-        tax_exempt=request.form['duration']
-        last_pay=request.form['amount']
+        amount=request.form['amount']
+        description=request.form['description']
+        tax_type=request.form['tax_type']
+        tax_exempt=request.form['tax_exempt']
+        last_pay=request.form['last_date']
         create_date=str(datetime.now())
-        status="Active"
-        c.execute("INSERT INTO payinvoices (id,client,amount,description,tex_type,tax_exempt,last_pay,create_date,amount,status) VALUES (?, ?,?,?,?,?,?,?,?,?)", (id,client,amount,description,tex_type,tax_exempt,last_pay,create_date,amount,status))
+        paid=request.form["paid"]
+        unpaid=request.form["unpaid"]
+        if paid:
+            status=paid
+        else:
+            status=unpaid
+        c.execute("INSERT INTO payinvoices (id,client,amount,description,tax_type,tax_exempt,last_pay,create_date,amount,status) VALUES (?, ?,?,?,?,?,?,?,?,?)", (id,client,amount,description,tax_type,tax_exempt,last_pay,create_date,amount,status))
         conn.commit()
 
         #closes the connection
@@ -278,9 +287,9 @@ def create_reminder():
     message=''
     if request.method == 'POST' and 'amount' in request.form and 'client' in request.form:
         id=37
-        text=request.form['client']
-        period=request.form['duration']
-        time=str(datetime.now())
+        text=request.form['text']
+        period=request.form['period']
+        time=requests.form['time']
         status="Active"
         c.execute("INSERT INTO reminders (id,text,period,time,status) VALUES (?, ?,?,?,?,?,?,?,?)", (id,text,period,time,status))
         conn.commit()
@@ -314,12 +323,12 @@ def create_ticket():
     message=''
     if request.method == 'POST' and 'amount' in request.form and 'client' in request.form:
         id=37
-        topic=request.form['client']
-        department=request.form['service_group']
-        staff=request.form['service']
+        topic=request.form['topic']
+        department=request.form['department']
+        staff=request.form['staff']
         create_date=str(datetime.now())
         status="Active"
-        c.execute("INSERT INTO payinvoices (id,topic,department,staff,create_date,status) VALUES (?, ?,?,?,?,?,?,?,?,?)", (id,topic,department,staff,create_date,status))
+        c.execute("INSERT INTO tickets (id,topic,department,staff,create_date,status) VALUES (?, ?,?,?,?,?,?,?,?,?)", (id,topic,department,staff,create_date,status))
         conn.commit()
 
         #closes the connection
