@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head><meta charset="shift_jis">
-  
+
   <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
   <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
   <title>
@@ -764,6 +764,7 @@
     <div class="row">
      <div class="col-12">
       <div class="card m-b-20">
+      <form action="{{ url_for('create_order') }}" method="post">
        <div class="card-body">
         <div class="padding20">
          <i class="fa fa-info-circle">
@@ -776,20 +777,123 @@
          </label>
          <div class="col-sm-10">
           <div class="col-sm-10">
-           <select class="form-control">
-            <option>
+           <select class="form-control" name="client">
+            <option value="John E.goulet">
              John E.goulet
             </option>
            </select>
           </div>
          </div>
         </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          Service Group
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <select class="form-control" name="service_group">
+            <option>
+             Choose
+            </option>
+            <option value="Domain Name Registration">
+             Domain Name Registration
+            </option>
+            <option value="Web Hosting">
+             Web Hosting
+            </option>
+            <option value="Server/VPS">
+             Server/VPS
+            </option>
+            <option value="Software Services">
+            Software Services
+            </option>
+            <option value="SMS Package">
+            SMS Package
+            </option>
+            <option value="Google SEO">
+             Google SEO
+            </option>
+           </select>
+          </div>
+         </div>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          Set Service Name
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <input class="form-control" name="service" id="example-text-input" type="text"/>
+          </div>
+         </div>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          Service Group Id
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <select class="form-control" name="service_group_id">
+            <option>
+             Choose
+            </option>
+            <option value="1010">
+             Domain Name Registration
+            </option>
+            <option value="10101">
+             Web Hosting
+            </option>
+            <option value="101010">
+             Server/VPS
+            </option>
+            <option value="1010101">
+            Software Services
+            </option>
+            <option value="10101010">
+            SMS Package
+            </option>
+            <option value="101010101">
+             Google SEO
+            </option>
+           </select>
+          </div>
+         </div>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          Duration
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+            <select class="form-control" name="duration">
+             <option value="year">
+              1 year
+             </option>
+             <option value="month">
+              1 month
+             </option>
+            </select>
+          </div>
+         </div>
+        </div>
+        <div class="form-group row">
+         <label class="col-sm-2 col-form-label" for="example-email-input">
+          Amount
+         </label>
+         <div class="col-sm-10">
+          <div class="col-sm-10">
+           <input class="form-control" name="amount" id="example-text-input" type="text"/>
+          </div>
+         </div>
+        </div>
+        <div class="msg">{{ message }}</div>
         <div align="right">
          <button class="btn btn-pink waves-effect waves-light" type="submit">
           Create
          </button>
         </div>
        </div>
+     </form>
       </div>
      </div>
      <!-- end col -->

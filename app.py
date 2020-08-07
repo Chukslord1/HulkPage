@@ -3,10 +3,15 @@ app = Flask(__name__)
 from flask import Flask, render_template, request, redirect, url_for, session
 import mysql.connector
 import re
-from flask_sqlalchemy import SQLAlchemy
-from models import *
 import os
 application=app
+from datetime import datetime
+import sqlite3
+
+
+db_path = "HulkPage.db"
+
+
 
 app.secret_key = 'roKBFeMEysoxUPUzVx7cRC17eUwEpJEWvxS9K7Gn'
 
@@ -15,12 +20,24 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'pythonlogin'
-file_path = os.path.abspath(os.getcwd())+"/HulkPage.db"
-app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///'+file_path
-db = SQLAlchemy(app)
+
+
 
 
 # Intialize MySQL
+#connects it to the books-collection database
+
+
+#creates the cursor
+
+
+#execute the query which creates the table called books with id and name
+#as the columns
+
+#executes the query which inserts values in the table
+
+
+#commits the executions
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -48,10 +65,41 @@ def login():
             msg = 'Incorrect username/password!'
     return render_template('pages-login.html', msg='')
 
+@app.route("/create-transaction/")
+def create_transaction():
+    id=5
+    client=request.args.get("client")
+    service=request.args.get("service")
+    service_group_id=request.args.get("service_group_id")
+    service_group=request.args.get("service_group")
+    created_at=str(datetime.now())
+    renewal=str(datetime.now())
+    amount=request.args.get("amount")
+    status="Active"
+    try:
+        if not Transaction.get(id):
+            conn = sqlite3.connect('HulkPage.db')
+            c = conn.cursor()
+            c.execute("INSERT INTO transactions (id,client,service,service_group,service_group_id,created_at,renewal,amount,status) VALUES (?, ?,?,?,?,?,?,?,?)", (id,client,service,service_group,service_group_id,created_at,renewal,amount,status))
+            conn.commit()
+
+                #closes the connection
+            conn.close()
+            return jsonify({"success":True,"message":"Transaction Created"})
+    except:
+        return jsonify({"success":False,"message":"Error while Creating Transaction please check inputs"})
+
+
+
+
+
+
 @app.route("/index/")
 def index():
-    transactions=Transaction.query.filter_by().all()
-    return render_template("index2.html",transactions=transactions)
+    db_connection = sqlite3.connect(db_path)
+    cursor = db_connection.cursor()
+    current_day = datetime.now().day
+    return render_template("index2.html")
 
 @app.route("/active-order.html/")
 def active_order():
@@ -161,17 +209,100 @@ def create_custom_field():
 def create_feedback():
     return render_template("create-feedback.html")
 
-@app.route("/create-order.html/")
+@app.route("/add-order/")
+def add_order():
+    id=datetime.now()
+    client=request.args.get("client")
+    service=request.args.get("service")
+    service_group_id=request.args.get("service_group_id")
+    service_group=ServiceGroup.query.filter_by(id=service_group_id).all()
+    created_at=datetime.now()
+    renewal=datetime.now()
+    amount=request.args.get("amount")
+    status="Active"
+    transaction= Order(id=id,client=client,service=service,service_group=service_group,service_group_id=service_group_id,created_at=created_at,renewal=renewal,amount=amount,status=status)
+    try:
+        if not Order.query.filter_by(id=id):
+            Order.create(id,client,service,service_group,service_group_id,created_at,renewal,amount,status)
+            return jsonify({"success":True,"message":"Order Created"})
+    except:
+        return jsonify({"success":False,"message":"Error while Creating Order please check inputs"})
+
+
+@app.route("/create-order.html/", methods=['GET', 'POST'])
 def create_order():
-    return render_template("create-order.html")
+    conn = sqlite3.connect('HulkPage.db')
+    c = conn.cursor()
+    message=''
+    if request.method == 'POST' and 'amount' in request.form and 'client' in request.form:
+        id=37
+        client=request.form['client']
+        service_group=request.form['service_group']
+        service_group_id=37
+        service=request.form['service']
+        duration=request.form['duration']
+        amount=request.form['amount']
+        created_at=str(datetime.now())
+        renewal=str(datetime.now())
+        status="Active"
+        c.execute("INSERT INTO orders (id,client,service,service_group,service_group_id,created_at,renewal,amount,status) VALUES (?, ?,?,?,?,?,?,?,?)", (id,client,service,service_group,service_group_id,created_at,renewal,amount,status))
+        conn.commit()
+
+        #closes the connection
+        conn.close()
+        return redirect(url_for('create_order'))
+        message="Created Order"
+
+
+    return render_template("create-order.html",message=message)
+
+
 
 @app.route("/create-pay-invoice.html/")
 def create_pay_invoice():
-    return render_template("create-pay-invoice.html")
+    conn = sqlite3.connect('HulkPage.db')
+    c = conn.cursor()
+    message=''
+    if request.method == 'POST' and 'amount' in request.form and 'client' in request.form:
+        id=37
+        client=request.form['client']
+        amount=request.form['service_group']
+        description=request.form['service']
+        tax_type=request.form['duration']
+        tax_exempt=request.form['duration']
+        last_pay=request.form['amount']
+        create_date=str(datetime.now())
+        status="Active"
+        c.execute("INSERT INTO payinvoices (id,client,amount,description,tex_type,tax_exempt,last_pay,create_date,amount,status) VALUES (?, ?,?,?,?,?,?,?,?,?)", (id,client,amount,description,tex_type,tax_exempt,last_pay,create_date,amount,status))
+        conn.commit()
+
+        #closes the connection
+        conn.close()
+        return redirect(url_for('create_pay_invoice'))
+        message="Created Invoice"
+
+
+    return render_template("create-pay-invoice.html",message=message)
 
 @app.route("/create-reminder.html/")
 def create_reminder():
-    return render_template("create-reminder.html")
+    conn = sqlite3.connect('HulkPage.db')
+    c = conn.cursor()
+    message=''
+    if request.method == 'POST' and 'amount' in request.form and 'client' in request.form:
+        id=37
+        text=request.form['client']
+        period=request.form['duration']
+        time=str(datetime.now())
+        status="Active"
+        c.execute("INSERT INTO reminders (id,text,period,time,status) VALUES (?, ?,?,?,?,?,?,?,?)", (id,text,period,time,status))
+        conn.commit()
+
+        #closes the connection
+        conn.close()
+        return redirect(url_for('create_order'))
+        message="Created Reminder"
+    return render_template("create-reminder.html",message=message)
 
 @app.route("/create-response.html/")
 def create_response():
@@ -191,6 +322,24 @@ def create_task_plan():
 
 @app.route("/create-ticket.html/")
 def create_ticket():
+    conn = sqlite3.connect('HulkPage.db')
+    c = conn.cursor()
+    message=''
+    if request.method == 'POST' and 'amount' in request.form and 'client' in request.form:
+        id=37
+        topic=request.form['client']
+        department=request.form['service_group']
+        staff=request.form['service']
+        create_date=str(datetime.now())
+        status="Active"
+        c.execute("INSERT INTO payinvoices (id,topic,department,staff,create_date,status) VALUES (?, ?,?,?,?,?,?,?,?,?)", (id,topic,department,staff,create_date,status))
+        conn.commit()
+
+        #closes the connection
+        conn.close()
+        return redirect(url_for('create_pay_invoice'))
+        message="Created Invoice"
+
     return render_template("create-ticket.html")
 
 @app.route("/custom-fields.html/")
