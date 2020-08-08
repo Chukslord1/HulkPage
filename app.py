@@ -41,6 +41,7 @@ def allowed_file(filename):
 #executes the query which inserts values in the table
 
 
+
 #commits the executions
 
 
@@ -102,8 +103,15 @@ def create_transaction():
 def index():
     db_connection = sqlite3.connect(db_path)
     cursor = db_connection.cursor()
-    current_day = datetime.now().day
-    return render_template("index2.html")
+    current_day = str(datetime.now().day)
+    conn = sqlite3.connect('HulkPage.db')
+    c = conn.cursor()
+    cursor.execute("SELECT SUM(amount) FROM transactions")
+    today_transactions= cursor.fetchone()
+    cursor.execute("SELECT * FROM transactions")
+    transactions=cursor.fetchone()
+    conn.close()
+    return render_template("index2.html",today_transactions=today_transactions,transactions=transactions)
 
 @app.route("/active-order.html/")
 def active_order():
@@ -285,7 +293,7 @@ def create_reminder():
     conn = sqlite3.connect('HulkPage.db')
     c = conn.cursor()
     message=''
-    if request.method == 'POST' and 'amount' in request.form and 'client' in request.form:
+    if request.method == 'POST':
         id=37
         text=request.form['text']
         period=request.form['period']
@@ -296,7 +304,7 @@ def create_reminder():
 
         #closes the connection
         conn.close()
-        return redirect(url_for('create_order'))
+        return redirect(url_for('create_reminder'))
         message="Created Reminder"
     return render_template("create-reminder.html",message=message)
 
@@ -312,8 +320,29 @@ def create_service_group():
 def create_slider():
     return render_template("create-slider.html")
 
-@app.route("/create-task-plan.html/")
+@app.route("/create-task-plan.html/", methods=['GET', 'POST'])
 def create_task_plan():
+    conn = sqlite3.connect('HulkPage.db')
+    c = conn.cursor()
+    message=''
+    if request.method == 'POST':
+        id=37
+        title=request.form['title']
+        description=request.form['description']
+        assign=request.form['assign']
+        department=request.form['department']
+        staff=request.form['staff']
+        start=request.form['start']
+        end=request.form['end']
+        status=request.form['status']
+        notes=request.form['note']
+        c.execute("INSERT INTO tasks (id,title,description,assign,department,staff,start,end,status,notes) VALUES (?, ?,?,?,?,?,?,?,?,?)", (id,title,description,assign,department,staff,start,end,status,notes))
+        conn.commit()
+
+        #closes the connection
+        conn.close()
+        return redirect(url_for('create_task_plan'))
+        message="Created Task"
     return render_template("create-task-plan.html")
 
 @app.route("/create-ticket.html/", methods=['GET', 'POST'])

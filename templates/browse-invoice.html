@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head><meta charset="shift_jis">
-  
+
   <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
   <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
   <title>
@@ -829,7 +829,7 @@
          Overdue
         </a>
        </div>
-       <button class="btn btn-secondary btn-sm waves-effect" type="button">
+       <button onclick="window.location.href='{{ url_for('create_pay_invoice') }}';" class="btn btn-secondary btn-sm waves-effect" type="button">
         Create Invoices
        </button>
       </div>

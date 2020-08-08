@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head><meta charset="shift_jis">
-  
+
   <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
   <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
   <title>
@@ -745,7 +745,7 @@
        <h4 class="page-title">
         <i class="dripicons-box">
         </i>
-        Create Invoice
+        Create Task Plan
        </h4>
       </div>
      </div>
@@ -758,21 +758,22 @@
     <div class="row">
      <div class="col-12">
       <div class="card m-b-20">
+        <form action="{{ url_for('create_task_plan') }}" method="post">
        <div class="card-body">
         <div class="form-group row">
          <label class="col-sm-2 col-form-label" for="example-text-input">
           Title
          </label>
          <div class="col-sm-10">
-          <input class="colorpicker-default form-control" type="text"/>
+          <input class="colorpicker-default form-control" name="title" type="text"/>
          </div>
         </div>
         <div class="form-group row">
-         <label class="col-sm-2 col-form-label" for="example-text-input">
+         <label class="col-sm-2 col-form-label"  for="example-text-input">
           Description
          </label>
          <div class="col-sm-10">
-          <input class="colorpicker-default form-control" type="text"/>
+          <input class="colorpicker-default form-control" name="description" type="text"/>
          </div>
         </div>
         <div class="form-group row">
@@ -780,35 +781,34 @@
           Assign
          </label>
          <div class="col-sm-10">
-          <input id="example-text-input" type="checkbox" value="Artisanal kale"/>
+          <input id="example-text-input" name="assign" type="radio" value="department"/>
           Department
-          <input id="example-text-input" type="checkbox" value="Artisanal kale"/>
+          <input id="example-text-input" name="assign" type="radio" value="staff"/>
           Staff
-          <select>
-           <option>
+          <select name="department">
+            <option >
+             Choose Department
+            </option>
+           <option value="general">
             General
            </option>
-           <option>
+           <option value="orders">
             Orders
            </option>
-           <option>
+           <option value="billing">
             Billing
            </option>
-           <option>
+           <option value="support">
             Technical Support
            </option>
           </select>
-         </div>
-        </div>
-        <div class="form-group row">
-         <label class="col-sm-2 col-form-label" for="example-search-input">
-          Assign
-         </label>
-         <div class="col-sm-10">
-          <select>
-           <option>
-            John E.goulet
-           </option>
+          <select name="staff">
+            <option >
+             choose Staff
+            </option>
+            <option value="John E.goulet">
+             John E.goulet
+            </option>
           </select>
          </div>
         </div>
@@ -820,14 +820,14 @@
           <div class="form-group">
            <div>
             <div class="input-group">
-             <input class="form-control" id="datepicker" placeholder="mm/dd/yyyy" type="text"/>
+             <input class="form-control" id="datepicker" name="start" placeholder="mm/dd/yyyy" type="text"/>
              <div class="input-group-append">
               <span class="input-group-text">
                <i class="mdi mdi-calendar">
                </i>
               </span>
              </div>
-             <input class="form-control" id="datepicker" placeholder="mm/dd/yyyy" type="text"/>
+             <input class="form-control" id="datepicker" name="end" placeholder="mm/dd/yyyy" type="text"/>
              <div class="input-group-append">
               <span class="input-group-text">
                <i class="mdi mdi-calendar">
@@ -847,13 +847,13 @@
          <div class="col-sm-10">
           <div class="form-group">
            <div>
-            <input id="example-text-input" type="checkbox" value="Artisanal kale"/>
+            <input id="example-text-input" name="status" type="radio" value="pending"/>
             Pending
-            <input id="example-text-input" type="checkbox" value="Artisanal kale"/>
+            <input id="example-text-input" name="status" type="radio" value="in progress"/>
             In Progress
-            <input id="example-text-input" type="checkbox" value="Artisanal kale"/>
+            <input id="example-text-input" name="status" type="radio" value="on hold"/>
             On Hold
-            <input id="example-text-input" type="checkbox" value="Artisanal kale"/>
+            <input id="example-text-input" name="status" type="radio" value="completed"/>
             Completed
            </div>
           </div>
@@ -864,7 +864,7 @@
           Status Notes
          </label>
          <div class="col-sm-10">
-          <input class="colorpicker-default form-control" type="text"/>
+          <input class="colorpicker-default form-control" name="note" type="text"/>
          </div>
         </div>
         <div align="left">
@@ -878,6 +878,7 @@
          </button>
         </div>
        </div>
+     </form>
       </div>
      </div>
      <!-- end col -->

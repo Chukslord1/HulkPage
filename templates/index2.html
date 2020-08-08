@@ -761,7 +761,7 @@
       <div class="card text-center m-b-30">
        <div class="mb-2 card-body text-muted">
         <h3 class="text-info">
-         Today Sales $0
+         Today Sales ${{today_transactions}}
         </h3>
         Yesterday Sales $0
        </div>
@@ -859,8 +859,8 @@
       <div class="table-responsive">
        <table class="table m-t-20 mb-0 table-vertical">
         <tbody>
-         <tr>
            {% for transaction in transactions %}
+        <tr>
           <td>
            <img alt="user-image" class="thumb-sm rounded-circle mr-2" src="{{ url_for('static', filename = 'assets/images/users/avatar-2.jpg') }}"/>
            Herbert C. Patton
@@ -897,8 +897,9 @@
             search
            </button>
           </td>
+          </tr>
           {% endfor %}
-         </tr>
+
         </tbody>
        </table>
       </div>
@@ -929,7 +930,7 @@
         <h4 class="mt-0 header-title">
          Tasks
         </h4>
-        <a href="{{ url_for('task_planner') }}">
+        <a href="{{ url_for('create_task_plan') }}">
          <h2>
           <span class="badge badge-default">
            Create New
