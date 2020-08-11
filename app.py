@@ -67,9 +67,9 @@ def login():
             if account['user_type']=="client":
                 return redirect(url_for('index'))
             elif account['user_type']=="reseller":
-                return redirect(url_for('index'))
+                return redirect(url_for('reseller_index'))
             elif account['user_type']=="admin":
-                return redirect(url_for('index'))
+                return redirect(url_for('admin'))
             else:
                 return redirect(url_for('login'))
         else:
@@ -106,6 +106,20 @@ def create_transaction():
 
 
 
+@app.route("/admin/")
+def admin():
+    db_connection = sqlite3.connect(db_path)
+    cursor = db_connection.cursor()
+    current_day = str(datetime.now().day)
+    conn = sqlite3.connect('HulkPage.db')
+    c = conn.cursor()
+    cursor.execute("SELECT SUM(amount) FROM transactions")
+    today_transactions= cursor.fetchone()
+    cursor.execute("SELECT * FROM transactions LIMIT 5")
+    transactions=cursor.fetchall()
+    conn.close()
+    return render_template("index2.html",today_transactions=today_transactions,transactions=transactions)
+
 @app.route("/index/")
 def index():
     db_connection = sqlite3.connect(db_path)
@@ -118,7 +132,21 @@ def index():
     cursor.execute("SELECT * FROM transactions LIMIT 5")
     transactions=cursor.fetchall()
     conn.close()
-    return render_template("index2.html",today_transactions=today_transactions,transactions=transactions)
+    return render_template("index-client.html",today_transactions=today_transactions,transactions=transactions)
+
+@app.route("/reseller/")
+def reseller_index():
+    db_connection = sqlite3.connect(db_path)
+    cursor = db_connection.cursor()
+    current_day = str(datetime.now().day)
+    conn = sqlite3.connect('HulkPage.db')
+    c = conn.cursor()
+    cursor.execute("SELECT SUM(amount) FROM transactions")
+    today_transactions= cursor.fetchone()
+    cursor.execute("SELECT * FROM transactions LIMIT 5")
+    transactions=cursor.fetchall()
+    conn.close()
+    return render_template("index-reseller.html",today_transactions=today_transactions,transactions=transactions)
 
 @app.route("/active-order.html/")
 def active_order():

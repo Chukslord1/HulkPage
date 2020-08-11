@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"/>
+  <title>
+   Hulkpage - Your Hosting Platform
+  </title>
+  <meta content="Admin Dashboard" name="description">
+   <meta content="Themesbrand" name="author">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <!-- App Icons -->
+    <link href="{{ url_for('static', filename = 'assets/images/favicon.ico') }}" rel="shortcut icon"/>
+    <!--Morris Chart CSS -->
+    <link href="{{ url_for('static', filename = 'assets/plugins/morris/morris.css') }}" rel="stylesheet"/>
+    <!-- App css -->
+    <link href="{{ url_for('static', filename = 'assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename = 'assets/css/icons.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename = 'assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    </link>
+   </meta>
+  </meta>
+ </head>
+ <body>
+  <!-- Loader -->
+  <div id="preloader">
+   <div id="status">
+    <div class="spinner">
+    </div>
+   </div>
+  </div>
+  <div class="header-bg">
+   <!-- Navigation Bar-->
+   <header id="topnav">
+    <div class="topbar-main">
+     <div class="container-fluid">
+      <!-- Logo container-->
+      <div class="logo">
+       <!-- Text Logo -->
+       <a class="logo" href="{{ url_for('index') }}">
+        HulkPage
+       </a>
+       <!-- Image Logo -->
+       <!-- <a href="index.html" class="logo">
+                                <img src="assets/images/logo-sm.png" alt="" height="22" class="logo-small">
+                                <img src="assets/images/logo.png" alt="" height="24" class="logo-large">
+                            </a> -->
+      </div>
+      <!-- End Logo container-->
+      <div class="menu-extras topbar-custom">
+       <ul class="list-inline float-right mb-0">
+        <!-- notification-->
+        <li class="list-inline-item dropdown notification-list">
+         <a aria-expanded="false" aria-haspopup="false" class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button">
+          <i class="ti-bell noti-icon">
+          </i>
+          <span class="badge badge-info badge-pill noti-icon-badge">
+           3
+          </span>
+         </a>
+         <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
+          <!-- item-->
+          <div class="dropdown-item noti-title">
+           <h5>
+            Notification (3)
+           </h5>
+          </div>
+          <!-- item-->
+          <a class="dropdown-item notify-item search" href="javascript:void(0);">
+           <div class="notify-icon bg-success">
+            <i class="mdi mdi-cart-outline">
+            </i>
+           </div>
+           <p class="notify-details">
+            <b>
+             Your order is placed
+            </b>
+            <small class="text-muted">
+             Dummy text of the printing and typesetting industry.
+            </small>
+           </p>
+          </a>
+          <!-- item-->
+          <a class="dropdown-item notify-item" href="javascript:void(0);">
+           <div class="notify-icon bg-warning">
+            <i class="mdi mdi-message">
+            </i>
+           </div>
+           <p class="notify-details">
+            <b>
+             New Message received
+            </b>
+            <small class="text-muted">
+             You have 87 unread messages
+            </small>
+           </p>
+          </a>
+          <!-- item-->
+          <a class="dropdown-item notify-item" href="javascript:void(0);">
+           <div class="notify-icon bg-info">
+            <i class="mdi mdi-martini">
+            </i>
+           </div>
+           <p class="notify-details">
+            <b>
+             Your item is shipped
+            </b>
+            <small class="text-muted">
+             It is a long established fact that a reader will
+            </small>
+           </p>
+          </a>
+          <!-- All-->
+          <a class="dropdown-item notify-item" href="javascript:void(0);">
+           View All
+          </a>
+         </div>
+        </li>
+        <!-- User-->
+        <li class="list-inline-item dropdown notification-list">
+         <a aria-expanded="false" aria-haspopup="false" class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button">
+          <img alt="user" class="rounded-circle" src="{{ url_for('static', filename = 'assets/images/users/avatar-1.jpg') }}"/>
+          <span class="ml-1">
+           Denish J.
+           <i class="mdi mdi-chevron-down">
+           </i>
+          </span>
+         </a>
+         <div class="dropdown-menu dropdown-menu-right profile-dropdown">
+          <a class="dropdown-item" href="#">
+           <i class="dripicons-user text-muted">
+           </i>
+           Profile
+          </a>
+          <a class="dropdown-item" href="#">
+           <i class="dripicons-wallet text-muted">
+           </i>
+           My Wallet
+          </a>
+          <a class="dropdown-item" href="#">
+           <span class="badge badge-success pull-right m-t-5">
+            5
+           </span>
+           <i class="dripicons-gear text-muted">
+           </i>
+           Settings
+          </a>
+          <a class="dropdown-item" href="#">
+           <i class="dripicons-lock text-muted">
+           </i>
+           Lock screen
+          </a>
+          <div class="dropdown-divider">
+          </div>
+          <a class="dropdown-item" href="#">
+           <i class="dripicons-exit text-muted">
+           </i>
+           Logout
+          </a>
+         </div>
+        </li>
+        <li class="menu-item list-inline-item">
+         <!-- Mobile menu toggle-->
+         <a class="navbar-toggle nav-link">
+          <div class="lines">
+           <span>
+           </span>
+           <span>
+           </span>
+           <span>
+           </span>
+          </div>
+         </a>
+         <!-- End mobile menu toggle-->
+        </li>
+       </ul>
+      </div>
+      <!-- end menu-extras -->
+      <div class="clearfix">
+      </div>
+     </div>
+     <!-- end container -->
+    </div>
+    <!-- end topbar-main -->
+    <!-- MENU Start -->
+    <div class="navbar-custom">
+     <div class="container-fluid">
+      <div id="navigation">
+       <!-- Navigation Menu-->
+       <ul class="navigation-menu">
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-suitcase">
+          </i>
+          Settings
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu megamenu">
+          <li>
+           <ul>
+            <li>
+             <a href="">
+              General
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Billing
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Fraud Protection
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Security
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Mail
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Sms
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Notification
+             </a>
+            </li>
+            <li>
+             <a href="">
+              Automation
+             </a>
+            </li>
+           </ul>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-to-do">
+          </i>
+          Orders
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="{{ url_for('browse_order') }}">
+            Browse
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('active_order') }}">
+            Active
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('pending_order') }}">
+            Pending
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('suspended_order') }}">
+            Suspended
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('cancelled_order') }}">
+            Cancelled
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('addons_order') }}">
+            Order Addons
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('cancel_request_order') }}">
+            Cancellation Request
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('create_order') }}">
+            Add Orders
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-trophy">
+          </i>
+          Billing
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="{{ url_for('browse_invoice') }}">
+            Browse Invoice
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('create_pay_invoice') }}">
+            Create Invoice
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('paid_invoice') }}">
+            Paid Invoice
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('unpaid_invoice') }}">
+            Unpaid Invoice
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('cancelled_invoice') }}">
+            Cancelled Invoice
+           </a>
+          </li>
+          <li class="has-submenu">
+           <a>
+            Official Invoice
+           </a>
+           <ul class="submenu">
+            <a href="{{ url_for('formalized_invoice') }}">
+             Formalized Invoice
+            </a>
+            <a href="{{ url_for('non_formalized_invoice') }}">
+             Non Formalized Invoice
+            </a>
+           </ul>
+          </li>
+          <li>
+           <a href="{{ url_for('cash_management') }}">
+            Cash Management
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Tools
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="{{ url_for('addons') }}">
+            Addons
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('reminder') }}">
+            Reminders
+           </a>
+          </li>
+          <li>
+           <a href="">
+            Easy Import Tools
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          WA Analytics
+          <i>
+          </i>
+         </a>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Support
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="{{ url_for('tickets') }}">
+            Tickets
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('create_ticket') }}">
+            Create Tickets
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('responses') }}">
+            Responses
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('knowledge_base') }}">
+            Knowledge Base
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Services
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li class="has-submenu">
+           <a>
+            Service Management
+           </a>
+           <ul class="submenu">
+            <a href="{{ url_for('create_service_group') }}">
+             Add Group
+            </a>
+            <a href="{{ url_for('module_setting') }}">
+             Module Settings
+            </a>
+            <a href="{{ url_for('product_addons') }}">
+             Addons
+            </a>
+            <a href="">
+             Requirements
+            </a>
+           </ul>
+          </li>
+          <li class="has-submenu">
+           <a>
+            Hosting Management
+           </a>
+           <ul class="submenu">
+            <a href="">
+             Server Settings
+            </a>
+            <a href="">
+             Hosting Packages
+            </a>
+            <a href="">
+             Dedicated/VPS Packages
+            </a>
+           </ul>
+          </li>
+          <li class="has-submenu">
+           <a>
+            Domain Name Registration
+           </a>
+           <ul class="submenu">
+            <a href="">
+             Extensions and Prices
+            </a>
+            <a href="">
+             Domain Name Registrars
+            </a>
+            <a href="">
+             Dedicated/VPS Packages
+            </a>
+           </ul>
+          </li>
+          <li>
+           <a href="">
+            Software Services
+           </a>
+          </li>
+          <li class="has-submenu">
+           <a>
+            International Sms Services
+           </a>
+           <ul class="submenu">
+            <a href="">
+             Sender IDs
+            </a>
+            <a href="">
+             Reports
+            </a>
+           </ul>
+          </li>
+          <li>
+           <a href="advanced-rating.html">
+            Google SEO Services
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Languages
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="{{ url_for('browse_language') }}">
+            Browse Languages
+           </a>
+          </li>
+          <li>
+           <a href="{{ url_for('find_replace') }}">
+            Find and Replace
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="has-submenu">
+         <a href="#">
+          <i class="dripicons-copy">
+          </i>
+          Help
+          <i class="mdi mdi-chevron-down mdi-drop">
+          </i>
+         </a>
+         <ul class="submenu">
+          <li>
+           <a href="">
+            Health Situations
+           </a>
+          </li>
+          <li>
+           <a href="">
+            Updates
+           </a>
+          </li>
+          <li>
+           <a href="">
+            Licence Information
+           </a>
+          </li>
+          <li>
+           <a href="">
+            User Guide
+           </a>
+          </li>
+          <li>
+           <a href="">
+            Development Guide
+           </a>
+          </li>
+         </ul>
+        </li>
+       </ul>
+       <!-- End navigation menu -->
+      </div>
+      <!-- end #navigation -->
+     </div>
+     <!-- end container -->
+    </div>
+    <!-- end navbar-custom -->
+   </header>
+   <!-- End Navigation Bar-->
+   <div class="container-fluid">
+    <!-- Page-Title -->
+    <div class="row">
+     <div class="col-sm-12">
+      <div class="page-title-box">
+       <form class="float-right app-search">
+        <input class="form-control" placeholder="Search..." type="text"/>
+        <button type="submit">
+         <i class="fa fa-search">
+         </i>
+        </button>
+       </form>
+       <h4 class="page-title">
+        <i class="dripicons-meter">
+        </i>
+        Dashboard
+       </h4>
+      </div>
+     </div>
+    </div>
+    <!-- end page title end breadcrumb -->
+   </div>
+  </div>
+  <div class="wrapper">
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-6 col-xl-3">
+      <div class="card text-center m-b-30">
+       <div class="mb-2 card-body text-muted">
+        <a href="{{ url_for('tickets') }}">
+         <h3 class="text-danger">
+          5 Pending Support Tickets
+         </h3>
+        </a>
+        Total Resolved 0
+       </div>
+      </div>
+     </div>
+     <div class="col-md-6 col-xl-3">
+      <div class="card text-center m-b-30">
+       <div class="mb-2 card-body text-muted">
+        <a href="{{ url_for('browse_invoice') }}">
+         <h3 class="text-danger">
+          4 Overdue Invoice
+         </h3>
+        </a>
+        (Total Resolved $0)
+       </div>
+      </div>
+     </div>
+     <div class="col-md-6 col-xl-3">
+      <div class="card text-center m-b-30">
+       <div class="mb-2 card-body text-muted">
+        <h3 class="text-primary">
+         0 Payment Date Upcoming
+        </h3>
+        (Total $0/Last 7 Days)
+       </div>
+      </div>
+     </div>
+     <div class="col-md-6 col-xl-3">
+      <div class="card text-center m-b-30">
+       <div class="mb-2 card-body text-muted">
+        <a href="{{ url_for('browse_order') }}">
+         <h3 class="text-purple">
+          0 Order In the Process
+         </h3>
+        </a>
+        Total ($0)
+       </div>
+      </div>
+     </div>
+     <div class="col-md-6 col-xl-3">
+      <div class="card text-center m-b-30">
+       <div class="mb-2 card-body text-muted">
+        <a href="{{ url_for('reminder') }}">
+         <h3 class="text-info">
+          0 Reminder
+         </h3>
+        </a>
+        (Will Happen Today)
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- end row -->
+    <div class="card m-b-30">
+     <div class="card-body">
+      <h4 class="mt-0 m-b-30 header-title">
+       Latest Transactions
+      </h4>
+      <div class="table-responsive">
+       <table class="table m-t-20 mb-0 table-vertical">
+        <tbody>
+           {% for transaction in transactions %}
+        <tr>
+          <td>
+           <i>
+           </i>
+           testexamledomain.com (#415)
+          </td>
+          <td>
+           <i>
+           </i>
+           Domain Names
+          </td>
+          <td>
+           <i class="mdi mdi-checkbox-blank-circle text-success">
+           </i>
+           Confirm
+          </td>
+          <td>
+           $14,584
+           <p class="m-0 text-muted font-14">
+            Amount
+           </p>
+          </td>
+          <td>
+           5/12/2016
+           <p class="m-0 text-muted font-14">
+            Date
+           </p>
+          </td>
+          <td>
+           <button class="btn btn-secondary btn-sm waves-effect" href="order-details.html" type="button">
+            search
+           </button>
+          </td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+       </table>
+      </div>
+     </div>
+    </div>
+    <div class="row">
+     <div class="col-xl-4">
+      <div class="card m-b-30">
+       <div class="card-body">
+        <h4 class="mt-0 header-title">
+         Payment Date Upcoming Invoices
+        </h4>
+        <a href="{{ url_for('create_pay_invoice') }}">
+         <h2>
+          <span class="badge badge-default">
+           Create New
+          </span>
+         </h2>
+        </a>
+        <div class="dash-chart" id="morris-donut-example">
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="col-xl-4">
+      <div class="card m-b-30">
+       <div class="card-body">
+        <h4 class="mt-0 header-title">
+         Reminders
+        </h4>
+        <a href="{{ url_for('reminder') }}">
+         <h2>
+          <span class="badge badge-default">
+           Create New
+          </span>
+         </h2>
+        </a>
+        <div class="dash-chart" id="morris-donut-example">
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="col-xl-4">
+      <div class="card m-b-30">
+       <div class="card-body">
+        <h4 class="mt-0 header-title">
+         Your Notes
+        </h4>
+        <div class="dash-chart" id="morris-donut-example">
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- end row -->
+    <div class="row">
+     <div class="col-xl-8">
+      <div class="card m-b-30">
+       <div class="card-body">
+        <h4 class="mt-0 m-b-30 header-title">
+         Pending Support Tickets
+        </h4>
+        <div class="table-responsive">
+         <table class="table m-t-20 mb-0 table-vertical">
+          <tbody>
+           <tr>
+            <td>
+             title
+            </td>
+            <td>
+             <i class="mdi mdi-checkbox-blank-circle text-success">
+             </i>
+             Confirm
+            </td>
+            <td>
+             5/12/2016
+             <p class="m-0 text-muted font-14">
+              Date
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-secondary btn-sm waves-effect" href="ticket-details.html" type="button">
+              search
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <img alt="user-image" class="thumb-sm rounded-circle mr-2" src="{{ url_for('static', filename = 'assets/images/users/avatar-3.jpg') }}"/>
+             Mathias N. Klausen
+            </td>
+            <td>
+             <i class="mdi mdi-checkbox-blank-circle text-warning">
+             </i>
+             Waiting payment
+            </td>
+            <td>
+             10/11/2016
+             <p class="m-0 text-muted font-14">
+              Date
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-secondary btn-sm waves-effect" href="ticket-details.html" type="button">
+              search
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <img alt="user-image" class="thumb-sm rounded-circle mr-2" src="{{ url_for('static', filename = 'assets/images/users/avatar-4.jpg') }}"/>
+             Nikolaj S. Henriksen
+            </td>
+            <td>
+             <i class="mdi mdi-checkbox-blank-circle text-success">
+             </i>
+             Confirm
+            </td>
+            <td>
+             8/11/2016
+             <p class="m-0 text-muted font-14">
+              Date
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-secondary btn-sm waves-effect" href="ticket-details.html" type="button">
+              search
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <img alt="user-image" class="thumb-sm rounded-circle mr-2" src="{{ url_for('static', filename = 'assets/images/users/avatar-5.jpg') }}"/>
+             Lasse C. Overgaard
+            </td>
+            <td>
+             <i class="mdi mdi-checkbox-blank-circle text-danger">
+             </i>
+             Payment expired
+            </td>
+            <td>
+             7/11/2016
+             <p class="m-0 text-muted font-14">
+              Date
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-secondary btn-sm waves-effect" href="ticket-details.html" type="button">
+              search
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <img alt="user-image" class="thumb-sm rounded-circle mr-2" src="{{ url_for('static', filename = 'assets/images/users/avatar-6.jpg') }}"/>
+             Kasper S. Jessen
+            </td>
+            <td>
+             <i class="mdi mdi-checkbox-blank-circle text-success">
+             </i>
+             Confirm
+            </td>
+            <td>
+             1/11/2016
+             <p class="m-0 text-muted font-14">
+              Date
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-secondary btn-sm waves-effect" href="ticket-details.html" type="button">
+              search
+             </button>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- end row -->
+   </div>
+   <!-- end container -->
+  </div>
+  <!-- end wrapper -->
+  <!-- Footer -->
+  <footer class="footer">
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-12">
+      Â© 2020 HulkPage
+     </div>
+    </div>
+   </div>
+  </footer>
+  <!-- End Footer -->
+  <!-- jQuery  -->
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/bootstrap.bundle.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/modernizr.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/waves.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.slimscroll.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.nicescroll.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/js/jquery.scrollTo.min.js') }}">
+  </script>
+  <!--Morris Chart-->
+  <script src="{{ url_for('static', filename = 'assets/plugins/morris/morris.min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/plugins/raphael/raphael-min.js') }}">
+  </script>
+  <script src="{{ url_for('static', filename = 'assets/pages/dashboard.js') }}">
+  </script>
+  <!-- App js -->
+  <script src="{{ url_for('static', filename = 'assets/js/app.js') }}">
+  </script>
+ </body>
+</html>
