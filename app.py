@@ -27,7 +27,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 def allowed_file(filename):
-	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 # Intialize MySQL
 #connects it to the books-collection database
 
@@ -64,7 +64,14 @@ def login():
             session['id'] = account['id']
             session['username'] = account['username']
             # Redirect to home page
-            return redirect(url_for('index'))
+            if account['user_type']=="client":
+                return redirect(url_for('index'))
+            elif account['user_type']=="reseller":
+                return redirect(url_for('index'))
+            elif account['user_type']=="admin":
+                return redirect(url_for('index'))
+            else:
+                return redirect(url_for('login'))
         else:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
@@ -108,8 +115,8 @@ def index():
     c = conn.cursor()
     cursor.execute("SELECT SUM(amount) FROM transactions")
     today_transactions= cursor.fetchone()
-    cursor.execute("SELECT * FROM transactions")
-    transactions=cursor.fetchone()
+    cursor.execute("SELECT * FROM transactions LIMIT 5")
+    transactions=cursor.fetchall()
     conn.close()
     return render_template("index2.html",today_transactions=today_transactions,transactions=transactions)
 
@@ -238,8 +245,8 @@ def create_order():
         created_at=str(datetime.now())
         renewal=str(datetime.now())
         status="Active"
-        cursor.execute("SELECT * FROM orders WHERE id=%s", (id,))
-        order_Id= cursor.fetchone()
+        c.execute("SELECT * FROM orders WHERE id=id")
+        order_id= c.fetchone()
         if not order_id:
             c.execute("INSERT INTO orders (id,client,service,service_group,service_group_id,created_at,renewal,amount,status) VALUES (?, ?,?,?,?,?,?,?,?)", (id,client,service,service_group,service_group_id,created_at,renewal,amount,status))
             conn.commit()
